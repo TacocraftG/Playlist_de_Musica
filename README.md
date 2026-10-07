@@ -8,36 +8,36 @@ Llena cada espacio conforme avances en las fases de [PRACTICA.md](PRACTICA.md).
 
 **1.1 El problema con mis propias palabras**
 
-[Inserta aquí tu respuesta]
+Diseñar una aplicacion para reproducir canciones y podcasts, con la posibilidad de crear playlists y poder editar estas.
 
 **1.2 Sustantivos (posibles clases) y verbos (posibles métodos)**
 
-Sustantivos: _____
+Sustantivos: Canción, Podcast, Playlist, Pista, Duración
 
-Verbos: _____
+Verbos: Agregar Canción, Eliminar Canción, Agregar Podcast, Eliminar Podcast
+        Crear Playlist, eliminar playlist, Agregar a playlist, Quitar de playlist, Forkear Playlist,
 
 **1.3 Relaciones** (completa con "es un", "tiene un" o "usa un")
 
-*   Una canción _____ pista.
-*   Un podcast _____ pista.
-*   Una pista _____ duración.
-*   Una playlist _____ canción.
+*   Una canción es una pista.
+*   Un podcast es una pista.
+*   Una pista tiene una duración.
+*   Una playlist tiene una canción.
 
 ## Fase 2. Diseñar la solución
 
 **2.1 Diagrama de clases**
 
-![Diagrama de clases](diseno_solucion.png)
+![Diagrama de clases](uml_playlist_musica.png)
 
 **2.2 Justificación de cada relación**
 
 | Relación | Tipo | ¿Por qué? |
 | --- | --- | --- |
-| Cancion - Pista | _____ | _____ |
-| Podcast - Pista | _____ | _____ |
-| Pista - Duracion | _____ | _____ |
-| Playlist - Cancion | _____ | _____ |
-| Playlist - Podcast | _____ | _____ |
+| Playlist - Pista | Agregación  | Pista puede existir sin que exista una playlist |
+| Pista - Cancion  | Extensión   | Canción hereda la clase pista |
+| Pista - Podcast  | Extensión   | Podcast hereda la clase pista |
+| Pista - Duracion | Composición | Duración no puede existir sin la clase pista |
 
 ## Fase 3. Implementar
 
