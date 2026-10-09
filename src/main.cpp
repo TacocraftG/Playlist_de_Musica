@@ -13,7 +13,7 @@ void limpiarBuffer() {
 
 int main() {
     std::string nombrePlaylist;
-    std::cout << "=== CREACION DE PLAYLIST ===" << std::endl;
+    std::cout << "=== CREACION DE PLAYLIST (CON OBJECT SLICING) ===" << std::endl;
     std::cout << "Ingrese el nombre para la playlist: ";
     std::getline(std::cin, nombrePlaylist);
 
@@ -56,13 +56,11 @@ int main() {
             std::cout << "Segundos: ";
             std::cin >> seg;
 
-            Cancion* nuevaCancion = new Cancion(titulo, min, seg, artista, genero);
-            if (miPlaylist.agregarCancion(nuevaCancion)) {
-                std::cout << "-> Cancion agregada exitosamente." << std::endl;
-            } else {
-                std::cout << "-> Error: La cancion ya existia o no es valida." << std::endl;
-                delete nuevaCancion; // Liberar memoria si no se agregó
-            }
+            // Se crea el objeto Cancion
+            Cancion nuevaCancion(titulo, min, seg, artista, genero);
+            // Al pasarse a agregarPista(Pista pista), ocurre Object Slicing
+            miPlaylist.agregarPista(nuevaCancion);
+            std::cout << "-> Cancion agregada (sus atributos de artista y genero se recortan por Object Slicing)." << std::endl;
 
         } else if (opcion == 2) {
             std::string titulo, anfitrion;
@@ -80,13 +78,11 @@ int main() {
             std::cout << "Segundos: ";
             std::cin >> seg;
 
-            Podcast* nuevoPodcast = new Podcast(titulo, min, seg, anfitrion, episodio);
-            if (miPlaylist.agregarPodcast(nuevoPodcast)) {
-                std::cout << "-> Podcast agregado exitosamente." << std::endl;
-            } else {
-                std::cout << "-> Error: El podcast ya existia o no es valido." << std::endl;
-                delete nuevoPodcast; // Liberar memoria si no se agregó
-            }
+            // Se crea el objeto Podcast
+            Podcast nuevoPodcast(titulo, min, seg, anfitrion, episodio);
+            // Al pasarse a agregarPista(Pista pista), ocurre Object Slicing
+            miPlaylist.agregarPista(nuevoPodcast);
+            std::cout << "-> Podcast agregado (sus atributos de anfitrion y episodio se recortan por Object Slicing)." << std::endl;
 
         } else if (opcion == 3) {
             std::cout << std::endl;

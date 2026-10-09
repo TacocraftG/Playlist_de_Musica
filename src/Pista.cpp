@@ -40,4 +40,5 @@ void Pista::mostrarInfo() const
 {
     std::cout << titulo << " - ";
     duracion.imprimir();
+    std::cout << std::endl;
 }
